@@ -4,6 +4,8 @@ Texture Generator for the TerraFirmaCraft Minecraft Mod
 
 ## Usage
 
+###### Prerequisites: [NodeJS](https://nodejs.org/en/)<br>
+
 After cloning the repo:
 
 ```sh
