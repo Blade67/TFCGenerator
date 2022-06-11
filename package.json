@@ -1,0 +1,17 @@
+{
+    "name": "tfcgenerator",
+    "version": "1.0.0",
+    "description": "Texture Generator for the TerraFirmaCraft Minecraft Mod",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "example": "node src/index.js --chest -t oak"
+    },
+    "author": "Maxime \"Blade\" G.",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^5.0.1",
+        "commander": "^9.3.0",
+        "jimp": "^0.16.1"
+    }
+}
