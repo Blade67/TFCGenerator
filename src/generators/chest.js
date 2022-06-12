@@ -4,8 +4,9 @@ import fs from "fs";
 
 /**
  * @param {String} type - The type of wood to be used as the material.
+ * @param {Boolean} trapped - Whether or not the chest is trapped.
  */
-async function generateChest(type) {
+async function generateChest(type, trapped = false) {
     if (!fs.existsSync(`./input/sheet/${type}.png`) || !fs.existsSync(`./input/log/${type}.png`))
         return console.error(chalk.red("❌"), "Textures(s) for type", chalk.blue(type), "not found.");
 
@@ -37,9 +38,20 @@ async function generateChest(type) {
     chest.blit(chestBorder, 0, 0);
     chest.blit(chestInner, 0, 0);
     chest.blit(chestOverlay, 0, 0);
-    chest.write(`./output/chest_${type}.png`);
 
-    console.log(chalk.green("✔"), "Generated chest for type", chalk.blue(type));
+    if (trapped) {
+        const chestTrappedOverlay = await jimp.read("./templates/chest_trapped_overlay.png");
+        chest.blit(chestTrappedOverlay, 0, 0);
+    }
+    chest.write(`./output/chest/chest_${trapped ? "trapped_" : ""}${type}.png`);
+
+    console.log(
+        chalk.green("✔"),
+        "Generated",
+        chalk.yellow(`${trapped ? "trapped " : ""}chest`),
+        "for type",
+        chalk.blue(type)
+    );
 }
 
 export default generateChest;
