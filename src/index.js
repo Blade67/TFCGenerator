@@ -1,4 +1,5 @@
 import { program } from "commander";
+import chalk from "chalk";
 
 import generateChest from "./generators/chest.js";
 import generateLargeChest from "./generators/largeChest.js";
@@ -34,4 +35,10 @@ if (options.chestTrappedLarge) {
     for (const type of [...options.type]) {
         await generateLargeChest(type, true);
     }
+}
+if (!options.chest && !options.chestLarge && !options.chestTrapped && !options.chestTrappedLarge) {
+    program.error(
+        chalk.yellow("[Warning] ") + "No generator options specified.\n\tUse the --help flag for more information.",
+        { exitCode: 2, code: "error.noGeneratorSelected" }
+    );
 }

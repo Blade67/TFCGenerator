@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Texture Generator for the TerraFirmaCraft Minecraft Mod",
     "type": "module",
-    "main": "index.js",
+    "main": "src/index.js",
     "scripts": {
         "example": "node src/index.js --chest -t oak"
     },
